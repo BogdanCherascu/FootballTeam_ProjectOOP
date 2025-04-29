@@ -43,7 +43,7 @@ Scopul proiectului este de a implementa o aplicație în C++ care modelează o e
 - Citire completă din fișiere `.txt`
 - Aplicație modulară, extensibilă, robustă
 
-## 📊 Exemple afișate
+##  Exemple afișate
 - Lista antrenorilor și jucătorilor
 - Statistici despre echipă (număr preparatori, analiști, psihologi)
 - Antrenori compatibili cu toți jucătorii
