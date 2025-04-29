@@ -1,0 +1,17 @@
+PreparatorFizic
+Ion_Popescu 10 4 Forta 1 1 2 Romana Engleza
+AnalistVideo
+George_Ionescu 7 Hudl 35 8 1 Romana
+PsihologSportiv
+Ana_Marin 5 30 9.2 1 3 Engleza Spaniola Italiana
+PreparatorFizic
+Mihai_Georgescu 8 5 Cardio 0 1 1 Romana
+AnalistVideo
+Andreea_Dobre 4 Dartfish 20 7 1 Spaniola
+PsihologSportiv
+Stefan_Cojocaru 6 45 8.5 1 2 Romana Engleza
+AnalistVideo
+Cristian_Popescu 3 Hudl 25 6 2 Engleza Spaniola
+PreparatorFizic
+Alexandru_Vasile 11 6 Forta 1 0 2 Romana Spaniola
+

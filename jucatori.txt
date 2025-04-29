@@ -1,0 +1,8 @@
+Alexandru_Radu 22 Fundas 5 Romania 1 Romana 2 3 15 0
+Ionel_Dumitru 28 Portar 1 Romania 2 Romana Italiana 0 0 40 1
+Vlad_Popescu 24 Mijlocas 8 Romania 1 Romana 5 7 20 0
+Adrian_Gheorghe 26 Atacant 9 Romania 2 Romana Engleza 12 4 18 1
+Razvan_Ionescu 21 Fundas 6 Romania 1 Romana 1 2 12 0
+Paul_Marinescu 23 Mijlocas 10 Romania 3 Romana Germana Italiana 3 5 19 0
+Florin_Stan 25 Portar 13 Romania 1 Romana 0 0 30 0
+Mihai_Sandu 22 Fundas 4 Romania 2 Romana Franceza 1 1 15 0
