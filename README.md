@@ -49,5 +49,9 @@ Scopul proiectului este de a implementa o aplicație în C++ care modelează o e
 - Antrenori compatibili cu toți jucătorii
 - Tratate excepții în `try/catch` cu mesaje clare
 
-## Concluzie
-Proiectul demonstrează implementarea corectă a principiilor OOP în C++. Codul este modular, extensibil și tratează cazuri de eroare prin excepții. Funcționalitatea este validată prin input din fișiere și afișări descriptive în consolă.
+## Bibliografie
+
+- Codebeauty YouTube Channel: https://www.youtube.com/@CodeBeauty
+- Material GitHub mcmarius: https://github.com/mcmarius/poo/tree/master/tema-2
+- Tutorial C++ W3Schools: https://www.w3schools.com/cpp/default.asp
+- Generare fișiere text folosind AI
