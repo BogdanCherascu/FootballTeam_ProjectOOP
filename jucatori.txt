@@ -1,0 +1,18 @@
+Alexandru_Pop 1997-03-16 2020-06-26 Fundas 61 Romana 1 Romana 67 1
+Ionel_Marinescu 1996-12-18 2019-08-03 Fundas 37 Romana 1 Romana 49 0
+Vlad_Petre 1999-11-02 2018-01-25 Fundas 92 Romana 2 Romana Franceza 45 0
+Radu_Iliescu 1996-09-23 2020-02-24 Fundas 90 Romana 2 Romana Germana 84 1
+Cristian_Nistor 2003-10-16 2022-04-23 Atacant 85 Romana 2 Romana Italiana 5 0
+Florin_Gheorghe 2003-05-25 2019-07-01 Mijlocas 67 Romana 1 Romana 7 1
+Mihai_Sandu 1996-05-21 2018-03-15 Mijlocas 44 Romana 1 Romana 89 1
+Paul_Stan 1998-11-10 2023-11-11 Portar 66 Romana 1 Romana 29 0
+George_Badea 1997-12-16 2017-04-27 Atacant 54 Romana 2 Romana Franceza 93 1
+Danut_Ciobanu 1997-03-20 2021-07-27 Portar 49 Romana 2 Romana Engleza 88 0
+Sebastian_Lupu 1998-06-14 2020-01-14 Mijlocas 36 Romana 1 Romana 72 1
+Claudiu_Bejenaru 1996-06-15 2021-11-07 Atacant 24 Romana 2 Romana Germana 53 1
+Bogdan_Serban 2001-12-23 2021-12-01 Fundas 16 Romana 2 Romana Italiana 76 0
+Andrei_Stoica 1996-05-18 2019-11-10 Mijlocas 21 Romana 2 Romana Franceza 81 1
+Eduard_Pavel 2004-06-17 2016-01-17 Mijlocas 20 Romana 1 Romana 2 0
+Sorin_Voicu 2003-10-20 2023-10-20 Fundas 8 Romana 2 Romana Engleza 3 0
+Lucian_Andrei 2002-11-20 2023-01-18 Atacant 82 Romana 2 Romana Engleza 90 1
+Alin_Popescu 1998-05-18 2017-03-06 Atacant 55 Romana 2 Romana Franceza 32 1
