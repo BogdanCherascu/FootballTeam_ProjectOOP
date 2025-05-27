@@ -12,11 +12,10 @@ Jucator::Jucator(const std::string& nume,
                  int numarTricou,
                  const std::string& nationalitate,
                  const std::vector<std::string>& limbiVorbite,
-                 int meciuriJucate,
                  bool esteCapitan)
     : nume(nume), dataNasterii(dataNasterii), dataIntrareClub(dataIntrareClub), pozitie(pozitie),
       numarTricou(numarTricou), nationalitate(nationalitate), limbiVorbite(limbiVorbite),
-      goluriMarcate(0), paseDecisive(0), meciuriJucate(meciuriJucate), esteCapitan(esteCapitan) {}
+      goluriMarcate(0), paseDecisive(0), esteCapitan(esteCapitan) {}
 
 Jucator::~Jucator() {}
 
@@ -60,8 +59,7 @@ void Jucator::descriere() const {
               << "\nLimbi vorbite: ";
     for (const auto& limba : limbiVorbite)
         std::cout << limba << " ";
-    std::cout << "\nMeciuri jucate: " << meciuriJucate
-              << "\nEste capitan: " << (esteCapitan ? "Da" : "Nu")
+    std::cout << "\nEste capitan: " << (esteCapitan ? "Da" : "Nu")
               << "\n----------------------\n";
 }
 
@@ -72,6 +70,14 @@ std::string Jucator::getNume() const {
 std::vector<std::string> Jucator::getLimbiVorbite() const {
     return limbiVorbite;
 }
+int Jucator::getGoluriMarcate() const {
+    return goluriMarcate;
+}
+
+int Jucator::getPaseDecisive() const {
+    return paseDecisive;
+}
+
 void Jucator::setGoluriMarcate(int goluri) {
     goluriMarcate = goluri;
 }
@@ -79,3 +85,4 @@ void Jucator::setGoluriMarcate(int goluri) {
 void Jucator::setPaseDecisive(int pase) {
     paseDecisive = pase;
 }
+
