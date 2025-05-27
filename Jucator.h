@@ -15,7 +15,6 @@ private:
     std::vector<std::string> limbiVorbite;
     int goluriMarcate;
     int paseDecisive;
-    int meciuriJucate;
     bool esteCapitan;
 
 public:
@@ -26,7 +25,6 @@ public:
             int numarTricou,
             const std::string& nationalitate,
             const std::vector<std::string>& limbiVorbite,
-            int meciuriJucate,
             bool esteCapitan);
 
     ~Jucator();
@@ -36,7 +34,10 @@ public:
     std::vector<std::string> getLimbiVorbite() const;
     int calculeazaVarsta() const;
     int aniInClub() const;
+    int getGoluriMarcate() const;
+    int getPaseDecisive() const;
     void setGoluriMarcate(int goluri);
     void setPaseDecisive(int pase);
+
 };
 #endif // JUCATOR_H
