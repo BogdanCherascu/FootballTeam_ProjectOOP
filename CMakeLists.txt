@@ -22,4 +22,12 @@ add_executable(ProiectPOO2 main.cpp
         Meci.cpp
         Meci.h
         Sezon.cpp
-        Sezon.h)
+        Sezon.h
+        Evaluare.h
+        AfisareEval.h
+        AntrenorFactory.cpp
+        AntrenorFactory.h
+        Logger.cpp
+        Logger.h
+        Command.h
+        AfiseazaJucatoriCommand.h)
