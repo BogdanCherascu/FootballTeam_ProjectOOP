@@ -7,12 +7,21 @@
 #include "Jucator.h"
 #include "Echipa.h"
 #include "Sezon.h"
+#include "Evaluare.h"
+#include "AfisareEval.h"
+#include "AntrenorFactory.h"
 #include "ExceptieNivelExperienta.h"
 #include "ExceptieGoluriNegative.h"
 #include "ExceptieEchipaGoala.h"
+#include "Logger.h"
+#include "AfiseazaJucatoriCommand.h"
+
 
 int main() {
     Echipa echipa("FC Proiect");
+    Logger::getInstance().log("Echipa a fost creata.");
+
+
     Echipa::setLimbaOficiala("Romana");
 
     // Citire antrenori
@@ -20,59 +29,21 @@ int main() {
     if (!finAntrenori.is_open()) {
         std::cerr << "Nu am putut deschide fisierul antrenori.txt\n";
         return 1;
-    }
+    }else{Logger::getInstance().log("Fisierul antrenori.txt a fost incarcat.");}
+
+
 
     std::string tip;
     while (finAntrenori >> tip) {
         try {
-            std::string nume;
-            int experienta;
-            finAntrenori >> nume >> experienta;
-            int nr;
-            std::vector<std::string> limbi;
-
-            if (tip == "PreparatorFizic") {
-                int sedinte;
-                std::string tipAntr;
-                bool individuale, recuperare;
-                finAntrenori >> sedinte >> tipAntr >> individuale >> recuperare >> nr;
-                for (int i = 0; i < nr; ++i) {
-                    std::string limba;
-                    finAntrenori >> limba;
-                    limbi.push_back(limba);
-                }
-                PreparatorFizic p(nume, experienta, sedinte, tipAntr, individuale, recuperare, limbi);
-                echipa.adaugaAntrenor(p);
-            }
-            else if (tip == "AnalistVideo") {
-                std::string software;
-                int meciuri, detaliu;
-                finAntrenori >> software >> meciuri >> detaliu >> nr;
-                for (int i = 0; i < nr; ++i) {
-                    std::string limba;
-                    finAntrenori >> limba;
-                    limbi.push_back(limba);
-                }
-                AnalistVideo a(nume, experienta, software, meciuri, detaliu, limbi);
-                echipa.adaugaAntrenor(a);
-            }
-            else if (tip == "PsihologSportiv") {
-                int sportivi;
-                float feedback;
-                bool participa;
-                finAntrenori >> sportivi >> feedback >> participa >> nr;
-                for (int i = 0; i < nr; ++i) {
-                    std::string limba;
-                    finAntrenori >> limba;
-                    limbi.push_back(limba);
-                }
-                PsihologSportiv ps(nume, experienta, sportivi, feedback, participa, limbi);
-                echipa.adaugaAntrenor(ps);
-            }
+            Antrenor* a = AntrenorFactory::creeaza(tip, finAntrenori);
+            echipa.adaugaAntrenor(*a);
+            delete a;
         } catch (const std::exception& e) {
-            std::cerr << "Eroare antrenor: " << e.what() << "\n";
+            std::cerr << "Eroare creare antrenor: " << e.what() << "\n";
         }
     }
+
     finAntrenori.close();
 
     // Citire jucatori
@@ -80,10 +51,10 @@ int main() {
     if (!finJucatori.is_open()) {
         std::cerr << "Nu am putut deschide fisierul jucatori.txt\n";
         return 1;
-    }
+    }else{Logger::getInstance().log("Fisierul jucatori.txt a fost incarcat.");}
 
     std::string nume, dataNasterii, dataIntrare, pozitie, nationalitate;
-    int numarTricou, nrLimbi, meciuriJucate, esteCapitan;
+    int numarTricou, nrLimbi, esteCapitan;
     while (finJucatori >> nume >> dataNasterii >> dataIntrare >> pozitie >> numarTricou >> nationalitate >> nrLimbi) {
         std::vector<std::string> limbi;
         for (int i = 0; i < nrLimbi; ++i) {
@@ -91,10 +62,10 @@ int main() {
             finJucatori >> limba;
             limbi.push_back(limba);
         }
-        finJucatori >> meciuriJucate >> esteCapitan;
+        finJucatori >> esteCapitan;
 
         try {
-            Jucator j(nume, dataNasterii, dataIntrare, pozitie, numarTricou, nationalitate, limbi, meciuriJucate, esteCapitan);
+            Jucator j(nume, dataNasterii, dataIntrare, pozitie, numarTricou, nationalitate, limbi, esteCapitan);
             echipa.adaugaJucator(j);
         } catch (const std::exception& e) {
             std::cerr << "Eroare jucator: " << e.what() << "\n";
@@ -102,18 +73,34 @@ int main() {
     }
     finJucatori.close();
 
-    // Sezon si meciuri
+
     Sezon sezon;
+    Logger::getInstance().log("Se genereaza sezonul...");
     sezon.genereazaSezon(echipa);
     sezon.actualizeazaStatisticiJucatori(echipa);
+    Logger::getInstance().log("Statistici jucatori actualizate dupa sezon.");
+    std::vector<int> scoruri;
+    std::vector<Jucator*> jucatori = echipa.getJucatori();
 
-    // Afisari generale
+    for (Jucator* j : jucatori) {
+        int scor = j->getGoluriMarcate() * 3 + j->getPaseDecisive() * 2;
+        scoruri.push_back(scor);
+    }
+
+
+
+
+
+
     std::cout << "\n--- INFORMATII ECHIPA ---\n";
     std::cout << "Limba oficiala: " << Echipa::getLimbaOficiala() << "\n\n";
 
     try {
         echipa.afiseazaAntrenori();
-        echipa.afiseazaJucatori();
+        Command* cmd = new AfiseazaJucatoriCommand(echipa);
+        cmd->executa();
+        delete cmd;
+
     } catch (const ExceptieEchipaGoala& e) {
         std::cerr << e.what() << "\n";
     }
@@ -129,5 +116,9 @@ int main() {
     std::cout << "\n--- REZUMAT SEZON ---\n";
     sezon.afiseazaRezumatMeciuri();
 
+    std::cout << "\n--- SCORURI CALCULATE ---\n";
+    afiseazaEvaluare(jucatori, scoruri);
+
+    Logger::getInstance().log("Programul s-a incheiat cu succes.");
     return 0;
 }
